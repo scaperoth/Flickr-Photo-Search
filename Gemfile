@@ -62,6 +62,8 @@ gem 'binding_of_caller'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
 
+gem 'rails_12factor'
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails'
