@@ -1,12 +1,20 @@
 module SearchHelper
   def self.searchByTags(tags)
 
+   flickrAPI += "https://api.flickr.com/services/rest/?"
+flickrAPI += "&method=flickr.photos.search"
+flickrAPI += "&api_key=9012151640d5486e63780579ff3b9cae"
+flickrAPI += "&tags=#{tags}"
+flickrAPI += "&per_page=5"
+flickrAPI += "&page=1"
+flickrAPI += "&format=json"
+
   end
 
   def get_request(url)
     require 'net/http'
 
-    uri = URI.parse("http://example.org")
+    uri = URI.parse("url")
 
     # Shortcut
     #response = Net::HTTP.post_form(uri, {"user[name]" => "testusername", "user[email]" => "testemail@yahoo.com"})
