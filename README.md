@@ -13,4 +13,12 @@ Ruby (v 2.3.0) on Rails application that finds photos using the Flickr API
 
 ### Screenshot
 
-![screenshot of application](/app/assets/images/home.png)
+![screenshot of application](/app/assets/images/home_lg.png)
+
+![screenshot of application](/app/assets/images/home_md.png)
+
+![screenshot of application](/app/assets/images/home_sm.png)
+
+![screenshot of application](/app/assets/images/home_xs.png)
+
+![screenshot of application](/app/assets/images/home_xxs.png)
