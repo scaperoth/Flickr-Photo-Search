@@ -14,7 +14,7 @@ module SearchHelper
     photo_info = get_request(flickrAPI)
   end
 
-  def self.searchByTags(tags, sort = "")
+  def self.searchByTags(tags, sort = "", page = 1)
 
     #main url and api keys
     flickrAPI  = "https://api.flickr.com/services/rest/?"
@@ -30,7 +30,7 @@ module SearchHelper
 
     #paging
     flickrAPI += "&per_page=20"
-    flickrAPI += "&page=1"
+    flickrAPI += "&page=#{page}"
 
     #json formatting
     flickrAPI += "&format=json"

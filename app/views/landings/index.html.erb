@@ -14,7 +14,7 @@
   	])) %>
   <%= submit_tag("Search") %>
 <% end %>
-
+<% link_to "next page >", search_by_tag_path(:tags => @tags, :sort => @sort, :page => photos["photos"]["page"].to_f+1, remote:true %>
 <div id="image_section">	
 
 	<%= render partial: "shared/spinner" %>
