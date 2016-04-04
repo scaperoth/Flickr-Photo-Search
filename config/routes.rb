@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   post "/" => "search#tag"
 
-  get 'search/by_tag' as "search_by_tag_path"
+  get 'search/by_tag'
 
   get 'search/sort'
 
