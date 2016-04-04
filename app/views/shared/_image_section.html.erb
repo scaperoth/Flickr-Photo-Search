@@ -8,9 +8,9 @@
 
 		<% photos["photos"]["photo"].each do |photo| %>
 				<%
-				#{"id", "owner", "secret", "server", "farm", "title", "ispublic", "isfriend", "isfamily"}
+					#{"id", "owner", "secret", "server", "farm", "title", "ispublic", "isfriend", "isfamily"}
+					photo_info = SearchHelper.getPhotoInfo(photo["id"], photo["secret"])
 				%>
-				<% photo_info = SearchHelper.getPhotoInfo(photo["id"], photo["secret"]) %>
 
 				<% photo_url = photo_info["photo"]["urls"]["url"][0]["_content"].strip %>
 				<% image_tag = image_tag("https://farm#{photo["farm"]}.staticflickr.com/#{photo["server"]}/#{photo["id"]}_#{photo["secret"]}_z.jpg") %>
