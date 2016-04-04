@@ -1,28 +1,16 @@
-== README
+== FLICKR PHOTO SEARCH APPLICATION
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby (v 2.3.0) on Rails application that finds photos using the Flickr API
 
-Things you may want to cover:
+==== Features
+* Sorting
+* Multiple Tags
+* Masonry Layout
+* Facebook Login
+* User management
+* [Active Admin](http://activeadmin.info/)
+* [Bootstrap](http://getbootstrap.com/) Responsive design
 
-* Ruby version
+=== Screenshot
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+![screenshot of application](/app/assets/images/home.PNG)
