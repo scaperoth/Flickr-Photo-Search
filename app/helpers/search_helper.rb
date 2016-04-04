@@ -22,12 +22,12 @@ module SearchHelper
     flickrAPI += "&safe_search=1"
 
     #make sure there are tags, otherwise get recent photos
-    if !tags.empty?
+    #if !tags.empty?
       flickrAPI += "&method=flickr.photos.search"
       flickrAPI += "&tags=#{tags}"
-    else
-      flickrAPI += "&method=flickr.photos.getRecent"
-    end
+    #else
+      #flickrAPI += "&method=flickr.photos.getRecent"
+   #end
 
     #paging
     flickrAPI += "&per_page=20"
