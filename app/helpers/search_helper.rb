@@ -19,6 +19,7 @@ module SearchHelper
     #main url and api keys
     flickrAPI  = "https://api.flickr.com/services/rest/?"
     flickrAPI += "&api_key=#{FLICKR_API_KEY}"
+    flickrAPI += "&safe_search=1"
 
     #make sure there are tags, otherwise get recent photos
     if !tags.empty?
