@@ -1,7 +1,7 @@
 $("#images .grid").html("<div class=\"grid-sizer\"></div><%= escape_javascript(render partial: 'shared/image_section', locals: { photos: @photos } ) %>");
 
 <%if @tags.empty? %>
-$("#images .grid").html("<h3> please enter a comma dilemmited list of tags. Trust me when I say that you don't want to just grab photos at random...</h3>")
+$("#images .grid").html("<h3> Please enter a comma-delimited list of tags. Trust me when I say that you don't want to just grab photos at random...</h3>")
 <% end  %>
 
 var grid = document.querySelector('.grid');
