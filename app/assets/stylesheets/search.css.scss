@@ -100,6 +100,28 @@
 @media only screen and (min-width: 550px){
   .grid-sizer,
   .grid-item {
+    width: 50%!important;
+  }
+}
+
+
+@media only screen and (min-width: 700px){
+  .grid-sizer,
+  .grid-item {
+    width: 33.33333%!important;
+  }
+}
+
+@media only screen and (min-width: 840px){
+  .grid-sizer,
+  .grid-item {
+    width: 25%!important;
+  }
+}
+
+@media only screen and (min-width: 1000px){
+  .grid-sizer,
+  .grid-item {
     width: 20%!important;
   }
 }
