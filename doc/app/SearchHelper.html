@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>module SearchHelper - Rails Application Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-getPhotoInfo">::getPhotoInfo</a>
+    
+    <li ><a href="#method-c-get_request">::get_request</a>
+    
+    <li ><a href="#method-c-searchByTags">::searchByTags</a>
+    
+    <li ><a href="#method-i-getPhotoInfo">#getPhotoInfo</a>
+    
+    <li ><a href="#method-i-searchByTags">#searchByTags</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-SearchHelper">
+  <h1 id="module-SearchHelper" class="module">
+    module SearchHelper
+  </h1>
+
+  <section class="description">
+    
+<p>author: Matt Scaperoth &lt;matthew@scaperoth.com&gt; description: this file
+uses an http request to  get API responses and returns them to a view or
+controller</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-getPhotoInfo" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getPhotoInfo</span><span
+            class="method-args">(photo_id, secret = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get info of individual photo by id</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getPhotoInfo-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getPhotoInfo</span>(<span class="ruby-identifier">photo_id</span>, <span class="ruby-identifier">secret</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">flickrAPI</span>  = <span class="ruby-string">&quot;https://api.flickr.com/services/rest/?&quot;</span>
+  <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;method=flickr.photos.getInfo&quot;</span>
+  <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&amp;api_key=#{FLICKR_API_KEY}&quot;</span>
+  <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&amp;photo_id=#{photo_id}&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">secret</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&amp;secret=#{secret}&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;format=json&quot;</span>
+  <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;nojsoncallback=1&quot;</span>
+
+  <span class="ruby-identifier">photo_info</span> = <span class="ruby-identifier">get_request</span>(<span class="ruby-identifier">flickrAPI</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-get_request" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_request</span><span
+            class="method-args">(url)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>perform a http request given a url</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_request-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_request</span>(<span class="ruby-identifier">url</span>)
+  <span class="ruby-identifier">require</span> <span class="ruby-string">&#39;net/http&#39;</span>
+
+  <span class="ruby-identifier">uri</span> = <span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">url</span>)
+
+  <span class="ruby-comment"># Shortcut</span>
+  <span class="ruby-comment">#response = Net::HTTP.post_form(uri, {&quot;user[name]&quot; =&gt; &quot;testusername&quot;, &quot;user[email]&quot; =&gt; &quot;testemail@yahoo.com&quot;})</span>
+
+  <span class="ruby-comment"># Full control</span>
+  <span class="ruby-identifier">http</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">host</span>, <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">port</span>)
+  <span class="ruby-identifier">http</span>.<span class="ruby-identifier">use_ssl</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-identifier">request</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span><span class="ruby-operator">::</span><span class="ruby-constant">Post</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">request_uri</span>)
+
+  <span class="ruby-comment">#request.set_form_data({&quot;user[name]&quot; =&gt; &quot;testusername&quot;, &quot;user[email]&quot; =&gt; &quot;testemail@yahoo.com&quot;})</span>
+
+  <span class="ruby-identifier">response</span> = <span class="ruby-identifier">http</span>.<span class="ruby-identifier">request</span>(<span class="ruby-identifier">request</span>)
+
+  <span class="ruby-identifier">clean_response</span> = <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> 
+
+  <span class="ruby-identifier">formatted_response</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">clean_response</span>)
+
+  <span class="ruby-identifier">formatted_response</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-searchByTags" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">searchByTags</span><span
+            class="method-args">(tags, sort = "", page = 1)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get a list of photos that have the tags provided</p>
+          
+          
+
+          
+          <div class="method-source-code" id="searchByTags-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">searchByTags</span>(<span class="ruby-identifier">tags</span>, <span class="ruby-identifier">sort</span> = <span class="ruby-string">&quot;&quot;</span>, <span class="ruby-identifier">page</span> = <span class="ruby-value">1</span>)
+
+  <span class="ruby-comment">#main url and api keys</span>
+  <span class="ruby-identifier">flickrAPI</span>  = <span class="ruby-string">&quot;https://api.flickr.com/services/rest/?&quot;</span>
+  <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&amp;api_key=#{FLICKR_API_KEY}&quot;</span>
+  <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;safe_search=1&quot;</span>
+
+  <span class="ruby-comment">#attach the tags to the request</span>
+  <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;method=flickr.photos.search&quot;</span>
+  <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&amp;tags=#{tags}&quot;</span>
+  
+  <span class="ruby-comment">#TODO: add paging</span>
+  <span class="ruby-comment">#paging</span>
+  <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;per_page=20&quot;</span>
+  <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&amp;page=#{page}&quot;</span>
+
+  <span class="ruby-comment">#json formatting</span>
+  <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;format=json&quot;</span>
+  <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;nojsoncallback=1&quot;</span>
+  
+  <span class="ruby-comment">#if sorting exists</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">sort</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">flickrAPI</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&amp;sort=#{sort}&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">photos</span> = <span class="ruby-identifier">get_request</span>(<span class="ruby-identifier">flickrAPI</span>)
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-getPhotoInfo" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getPhotoInfo</span><span
+            class="method-args">(photo_id, secret = null)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>view accessible functions</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getPhotoInfo-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getPhotoInfo</span>(<span class="ruby-identifier">photo_id</span>, <span class="ruby-identifier">secret</span> = <span class="ruby-identifier">null</span>)
+  <span class="ruby-constant">SearchHelper</span>.<span class="ruby-identifier">getPhotoInfo</span>(<span class="ruby-identifier">photo_id</span>, <span class="ruby-identifier">secret</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-searchByTags" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">searchByTags</span><span
+            class="method-args">(tags, sort = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="searchByTags-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">searchByTags</span>(<span class="ruby-identifier">tags</span>, <span class="ruby-identifier">sort</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-constant">SearchHelper</span>.<span class="ruby-identifier">searchByTags</span>(<span class="ruby-identifier">tags</span>, <span class="ruby-identifier">sort</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

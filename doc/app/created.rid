@@ -1,0 +1,17 @@
+Mon, 04 Apr 2016 08:20:11 -0700
+README.rdoc	Mon, 04 Apr 2016 08:14:02 -0700
+app/admin/admin_user.rb	Mon, 04 Apr 2016 07:36:39 -0700
+app/admin/dashboard.rb	Mon, 04 Apr 2016 07:36:39 -0700
+app/admin/user.rb	Mon, 04 Apr 2016 07:36:39 -0700
+app/controllers/application_controller.rb	Mon, 04 Apr 2016 07:36:39 -0700
+app/controllers/landings_controller.rb	Mon, 04 Apr 2016 07:48:38 -0700
+app/controllers/search_controller.rb	Mon, 04 Apr 2016 07:42:28 -0700
+app/controllers/users/omniauth_callbacks_controller.rb	Mon, 04 Apr 2016 07:36:39 -0700
+app/controllers/users/passwords_controller.rb	Mon, 04 Apr 2016 07:36:39 -0700
+app/controllers/users/registrations_controller.rb	Mon, 04 Apr 2016 07:36:39 -0700
+app/controllers/users/sessions_controller.rb	Mon, 04 Apr 2016 07:36:39 -0700
+app/helpers/application_helper.rb	Mon, 04 Apr 2016 07:36:39 -0700
+app/helpers/landings_helper.rb	Mon, 04 Apr 2016 07:36:39 -0700
+app/helpers/search_helper.rb	Mon, 04 Apr 2016 07:47:59 -0700
+app/models/admin_user.rb	Mon, 04 Apr 2016 07:36:39 -0700
+app/models/user.rb	Mon, 04 Apr 2016 07:36:39 -0700
