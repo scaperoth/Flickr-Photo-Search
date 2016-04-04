@@ -1,9 +1,22 @@
+/**
+ * author: Matt Scaperoth <matthew@scaperoth.com>
+ * description: This file is called from the search controller
+ * after an ajax reqest. It loads the photos from the API into the 
+ * photo grid and then reapplies the styles to the grid so that 
+ * there is no white space between photos
+ */
+
+//rewrite html for json request
 $("#images .grid").html("<div class=\"grid-sizer\"></div><%= escape_javascript(render partial: 'shared/image_section', locals: { photos: @photos } ) %>");
 
-<%if @tags.empty? %>
+
+<% #if no tags are selected, print a message saying how to use the app
+if @tags.empty? %>
+
 $("#images .grid").html("<h3> Please enter a comma-delimited list of tags. Trust me when I say that you don't want to just grab photos at random...</h3>")
 <% end  %>
 
+//masonry script to apply after load
 var grid = document.querySelector('.grid');
 var msnry;
 

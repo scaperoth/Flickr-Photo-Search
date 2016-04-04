@@ -1,5 +1,12 @@
+#
+# author: Matt Scaperoth <matthew@scaperoth.com>
+# description: this file uses an http request to 
+# get API responses and returns them to a view or controller
+#
+
 module SearchHelper
 
+  #get info of individual photo by id 
   def self.getPhotoInfo(photo_id, secret = nil)
     flickrAPI  = "https://api.flickr.com/services/rest/?"
     flickrAPI += "&method=flickr.photos.getInfo"
@@ -14,6 +21,7 @@ module SearchHelper
     photo_info = get_request(flickrAPI)
   end
 
+  #get a list of photos that have the tags provided
   def self.searchByTags(tags, sort = "", page = 1)
 
     #main url and api keys
@@ -21,14 +29,11 @@ module SearchHelper
     flickrAPI += "&api_key=#{FLICKR_API_KEY}"
     flickrAPI += "&safe_search=1"
 
-    #make sure there are tags, otherwise get recent photos
-    #if !tags.empty?
-      flickrAPI += "&method=flickr.photos.search"
-      flickrAPI += "&tags=#{tags}"
-    #else
-      #flickrAPI += "&method=flickr.photos.getRecent"
-   #end
-
+    #attach the tags to the request
+    flickrAPI += "&method=flickr.photos.search"
+    flickrAPI += "&tags=#{tags}"
+    
+    #TODO: add paging
     #paging
     flickrAPI += "&per_page=20"
     flickrAPI += "&page=#{page}"
@@ -46,6 +51,7 @@ module SearchHelper
 
   end
 
+  #perform a http request given a url 
   def self.get_request(url)
     require 'net/http'
 
@@ -71,6 +77,7 @@ module SearchHelper
 
   end
 
+  #view accessible functions
   def getPhotoInfo(photo_id, secret = null)
     SearchHelper.getPhotoInfo(photo_id, secret)
   end

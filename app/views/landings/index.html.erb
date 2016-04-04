@@ -1,4 +1,9 @@
-
+<%
+#
+# author: Matt Scaperoth <matthew@scaperoth.com>
+# description: renders a search form and the photos after search is performed
+#
+%>
 
 <%= form_tag("/search/by_tag", method: "get", remote: true, :class => "form") do %>
   <%= label_tag(:tags, "Search for:") %>
@@ -12,18 +17,18 @@
   	['Interestingness ASC', 'interestingness-asc'],
   	['Relevance', 'relevance'],
   	])) %>
+    <!-- TODO: Add Paging -->
   <%= submit_tag("Search") %>
-<% end %>
+<% end %><!--end form -->
+
+
 <div id="image_section">	
 
 	<%= render partial: "shared/spinner" %>
 	<div id="images">
 		<div class="grid">
 			
-		</div>
-	</div>
-</div>
+		</div><!--end grid-->
+	</div><!-- end images-->
+</div><!-- end image_section -->
 
-<script type="text/javascript">
-
-</script>
