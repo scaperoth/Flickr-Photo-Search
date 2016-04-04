@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'search/tag'
+  post "/" => "search#tag"
+
+  get 'search/by_tag'
 
   get 'search/sort'
 
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'search#tag'
+  root 'landings#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

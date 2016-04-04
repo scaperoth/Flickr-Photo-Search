@@ -1,0 +1,27 @@
+
+
+<% if !photos.nil? and !photos["photos"].nil?%>
+	
+	<% if photos["photos"]["total"].to_f == 0 %>
+		<h3>Your search has returned no results</h3>
+	<% else %>
+
+		<% photos["photos"]["photo"].each do |photo| %>
+				<%
+				#{"id", "owner", "secret", "server", "farm", "title", "ispublic", "isfriend", "isfamily"}
+				%>
+				<% photo_info = SearchHelper.getPhotoInfo(photo["id"], photo["secret"]) %>
+
+				<% photo_url = photo_info["photo"]["urls"]["url"][0]["_content"].strip %>
+				<% image_tag = image_tag("https://farm#{photo["farm"]}.staticflickr.com/#{photo["server"]}/#{photo["id"]}_#{photo["secret"]}_z.jpg") %>
+
+				 <div class="grid-item">
+
+				<%= 
+					image_tag
+					#link_to image_tag, photo_url , :target=> "_blank" 
+				%>
+				</div>
+		<% end %>
+	<% end %>
+<% end %>

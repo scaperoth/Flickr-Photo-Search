@@ -1,0 +1,15 @@
+$("#images .grid").html("<div class=\"grid-sizer\"></div><%= escape_javascript(render partial: 'shared/image_section', locals: { photos: @photos } ) %>");
+
+
+
+var grid = document.querySelector('.grid');
+var msnry;
+
+imagesLoaded( grid, function() {
+  // init Isotope after all images have loaded
+  msnry = new Masonry( grid, {
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-sizer',
+    percentPosition: true
+  });
+});

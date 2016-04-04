@@ -1,9 +1,14 @@
 class SearchController < ApplicationController
-  def tag
+  def by_tag
     @tags = params[:tags]
+    @sort = params[:sort]
+
+    @photos = SearchHelper.searchByTags(@tags, @sort)
     
-    @photos = @tags.nil? ? nil : SearchHelper.searchByTags(@tags)
-    
+    respond_to do |format|
+        format.js
+        #format.html
+    end
   end
 
   def sort
